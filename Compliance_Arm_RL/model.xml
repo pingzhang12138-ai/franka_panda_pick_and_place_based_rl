@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mujoco model="model_unity">
+    <compiler angle="degree"/>
+    <option integrator="RK4" timestep="0.002"/>
+
+    <visual>
+        <global ellipsoidinertia="true"/>
+    </visual>
+
+    <default>
+        <default class="m1">
+            <material specular="0.5" shininess="0.25"/>
+        </default>
+        <geom contype="1" conaffinity="1"/>
+    </default>
+
+    <asset>
+        <material class="m1" name="white" rgba="1 1 1 1"/>
+        <texture name="groundplane" type="2d" builtin="checker" mark="edge"
+                 rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane"
+                  texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    </asset>
+
+    <worldbody>
+        <light name="sun" directional="true" diffuse="0.7 0.7 0.7" specular="0.3 0.3 0.3" dir="0.5 -0.5 -1"/>
+        <geom name="floor" size="10 10 0.1" type="plane" material="groundplane"/>
+        <body name="body1" childclass="m1" pos="0 0 1">
+            <inertial mass="0.5" pos="0 0 0" fullinertia="0.00315 0.00388 0.004285 8.2904e-7 0.00015 8.2299e-6"/>
+            <geom name="object1" type="box" size="1 1 1" material="white"/>
+        </body>
+    </worldbody>
+</mujoco>

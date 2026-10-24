@@ -1,0 +1,17 @@
+program: Paramters_Sweep.py
+project: Panda_RL
+run_cap: 10
+method: bayes
+metric:
+  name: eval/mean_reward
+  goal: maximize
+parameters:
+  learning_rate:
+    min: 0.0001
+    max: 0.001
+  gamma:
+    distribution: categorical
+    values: [0.95, 0.97, 0.99]
+  clip_range:
+    distribution: categorical
+    values: [0.1, 0.2, 0.3]
